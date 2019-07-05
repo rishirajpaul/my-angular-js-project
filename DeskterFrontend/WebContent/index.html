@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+
+<head>
+    <title>Bootstrap Template | Design Studio</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- favicons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="images/favicons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="images/favicons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/favicons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="images/favicons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/favicons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="images/favicons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="images/favicons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="images/favicons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="images/favicons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="images/favicons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicons/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <!-- favicons -->
+    <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/custom-responsive-style.css">
+    <link href="//fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <script type="text/javascript" src="script/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="script/all-plugins.js"></script>
+    <script type="text/javascript" src="script/plugin-active.js"></script>
+</head>
+<body data-spy="scroll" data-target=".main-navigation" data-offset="150" ng-app="myApp">
+    <section id="MainContainer">
+        <!-- Header starts here -->
+        <header id="Header">
+            <nav class="main-navigation">
+                <div class="container clearfix">
+                    <div class="site-logo-wrap">
+                        <a class="logo" href="#"><img src="images/ds-logo.svg" alt="Design Studio"></a>
+                    </div>
+                    <a href="javascript:void(0)" class="menu-trigger hidden-lg-up"><span>&nbsp;</span></a>
+                    <div class="main-menu hidden-md-down">
+                        <ul class="menu-list">
+                            <li  ng-show="currentUser.role == 'USER' ">
+                            <a class="nav-link" href="#!UserView">USER</a>
+                            </li>
+                            <li ng-show="currentUser.role != 'USER'" ng-hide="currentUser.role == 'ADMIN'">
+                            <a class="nav-link" href="#!Login">LOGIN</a>
+                            </li>
+                            <li ng-show="currentUser.role == 'USER'" ng-hide="currentUser.role != 'ADMIN'">
+                            <a class="nav-link" href="#!index"  ng-controller="UserController as ct"  ng-click="ct.logout(currentUser,currentUser.userId)">LOGOUT</a>
+                            </li>
+                            <li ng-show="currentUser.role != 'USER'" ng-hide="currentUser.role == 'ADMIN'">
+                            <a class="nav-link" href="#!NewUser">NEW USER</a>
+                            </li>
+                            <li ng-show=" currentUser.role == 'ADMIN'">
+                            <a class="nav-link" href="#!BlogList">BLOG LIST</a>
+                            </li>
+							 <li ng-show="currentUser.role == 'USER' ">
+							 <a class="nav-link" href="#!AddBlog">ADD BLOG </a>
+							 </li>
+							 <li  ng-show=" currentUser.role == 'USER' ">
+							 <a class="nav-link" href="#!ApproveBlog">APPROVE BLOG</a>
+							 </li>
+							 <li ng-show=" currentUser.role == 'ADMIN'">
+							 <a class="nav-link" href="#!Forum">FORUM</a>
+							 </li>
+							 <li  ng-show=" currentUser.role == 'USER'">
+							 <a class="nav-link" href="#!AddForum">NEW FORUM</a>
+							 </li>
+							 <li  ng-show="currentUser.role == 'USER' ">
+							 <a class="nav-link" href="#!ApproveForumList">APPROVE FORUM</a>
+							 </li>
+							 <li  ng-show="currentUser.role == 'USER' ">
+							 <a class="nav-link" href="#!jobList">JOB</a>
+							 </li>
+							 <li ng-show=" currentUser.role == 'ADMIN'">
+							 <a class="nav-link" href="#!NewJob">ADD JOB</a>
+							 </li>
+							 <li ng-show=" currentUser.role == 'ADMIN'">
+							 <a class="nav-link" href="#!JobApplicationView">JOB APPLICATION</a>
+							 </li>
+							 <li ng-show="currentUser.role == 'USER' ">
+							 <a class="nav-link" href="#!ViewFriend">FRIENDS</a>
+							 </li>
+							<li ng-show="currentUser.role == 'USER' ">
+							<a class="nav-link" href="#!Request">FRIEND REQUEST</a>
+							</li>
+							<li  ng-show="currentUser.role == 'USER' ">
+							<a class="nav-link" href="#!chat">CHAT</a>
+							</li>
+							<li  ng-show="currentUser.role == 'USER' ">
+							<a class="nav-link" href="#!MyProfile">Hello{{currentUser.userId}}</a>
+							</li>
+							
+							
+                        </ul>
+                    </div>
+                </div>
+                <div class="mobile-menu hidden-lg-up">
+                    <ul class="mobile-menu-list">
+                        
+                            <li  ng-show="currentUser.role == 'USER' ">
+                            <a class="nav-link" href="#!UserView">USER</a>
+                            </li>
+                            <li ng-show="currentUser.role != 'USER'" ng-hide="currentUser.role == 'ADMIN'">
+                            <a class="nav-link" href="#!Login">LOGIN</a>
+                            </li>
+                            <li ng-show="currentUser.role == 'USER'" ng-hide="currentUser.role != 'ADMIN'">
+                            <a class="nav-link" href="#!index"  ng-controller="UserController as ct"  ng-click="ct.logout(currentUser,currentUser.userId)">LOGOUT</a>
+                            </li>
+                            <li ng-show="currentUser.role != 'USER'" ng-hide="currentUser.role == 'ADMIN'">
+                            <a class="nav-link" href="#!NewUser">NEW USER</a>
+                            </li>
+                            <li ng-show=" currentUser.role == 'ADMIN'">
+                            <a class="nav-link" href="#!BlogList">BLOG LIST</a>
+                            </li>
+							 <li ng-show="currentUser.role == 'USER' ">
+							 <a class="nav-link" href="#!AddBlog">ADD BLOG </a>
+							 </li>
+							 <li  ng-show="currentUser.role == 'USER' ">
+							 <a class="nav-link" href="#!ApproveBlog">APPROVE BLOG</a>
+							 </li>
+							 <li ng-show=" currentUser.role == 'FORUM'">
+							 <a class="nav-link" href="#!Forum">FORUM</a>
+							 </li>
+							 <li  ng-show=" currentUser.role == 'USER'">
+							 <a class="nav-link" href="#!AddForum">NEW FORUM</a>
+							 </li>
+							 <li  ng-show="currentUser.role == 'USER' ">
+							 <a class="nav-link" href="#!ApproveForumList">APPROVE FORUM</a>
+							 </li>
+							 <li  ng-show="currentUser.role == 'USER' ">
+							 <a class="nav-link" href="#!jobList">JOB</a>
+							 </li>
+							 <li  ng-show="currentUser.role == 'USER' ">
+							 <a class="nav-link" href="#!chat">CHAT</a>
+							 </li>
+							 <li ng-show=" currentUser.role == 'ADMIN'">
+							 <a class="nav-link" href="#!NewJob">ADD JOB</a>
+							 </li>
+							 <li ng-show=" currentUser.role == 'ADMIN'">
+							 <a class="nav-link" href="#!JobApplicationView">JOB APPLICATION</a>
+							 </li>
+							 <li ng-show="currentUser.role == 'USER' ">
+							 <a class="nav-link" href="#!ViewFriend">FRIENDS</a>
+							 </li>
+							<li ng-show="currentUser.role == 'USER' ">
+							<a class="nav-link" href="#!Request">FRIEND REQUEST</a>
+							</li>
+							<li  ng-show="currentUser.role == 'USER' ">
+							<a class="nav-link" href="#!chat">CHAT</a>
+							</li>
+							<li  ng-show="currentUser.role == 'USER' ">
+							<a class="nav-link" href="#!MyProfile">Hello{{currentUser.userId}}</a>
+							</li>
+							</ul>
+                </div>
+            </nav>
+        </header>
+         
+  
+
+        
+        <!-- Header ends here -->
+        <!-- Banner starts here -->
+        <section id="HeroBanner">
+            <div class="hero-content">
+                <h1>Welcome to Deskter</h1>
+                <p>ANYTHING AT YOUR DESK</p>
+                <a href="#" class="hero-cta">Get Started</a>
+            </div>
+        </section>
+        
+        
+              
+        <!-- Banner ends here -->
+        <!-- Services section starts here -->
+        <section id="Services">
+            <div class="container">
+                <div class="block-heading">
+                    <h2>Services</h2>
+                    <p>AT YOUR SERVICE</p>
+                </div>
+                <div class="services-wrapper">
+                    <div class="each-service">
+                        <div class="service-icon"><i class="fa fa-desktop" aria-hidden="true"></i></div>
+                        <h5 class="service-title">NEWS</h5>
+                        <p class="service-description">DAILY NEWS AT DESKTER.</p>
+                    </div>
+                    <div class="each-service">
+                        <div class="service-icon"><i class="fa fa-line-chart" aria-hidden="true"></i></div>
+                        <h5 class="service-title">BUSINESS ANALYSIS</h5>
+                        <p class="service-description">DAILY BUSINESS ANALYSIS.</p>
+                    </div>
+                    <div class="each-service">
+                        <div class="service-icon"><i class="fa fa-paper-plane" aria-hidden="true"></i></div>
+                        <h5 class="service-title">MESSAGES</h5>
+                        <p class="service-description">QUICK MESSAGES AT DESKTER.</p>
+                    </div>
+                    <div class="each-service">
+                        <div class="service-icon"><i class="fa fa-university" aria-hidden="true"></i></div>
+                        <h5 class="service-title">DEBATE</h5>
+                        <p class="service-description">DAILY DEBATE AT DESKTER.</p>
+                    </div>
+                    <div class="each-service">
+                        <div class="service-icon"><i class="fa fa-camera-retro" aria-hidden="true"></i></div>
+                        <h5 class="service-title">PHOTOS</h5>
+                        <p class="service-description">UPDATE PHOTOS AT DESKTER.</p>
+                    </div>
+                    <div class="each-service">
+                        <div class="service-icon"><i class="fa fa-shopping-bag" aria-hidden="true"></i></div>
+                        <h5 class="service-title">HEALTH AND FITNESS</h5>
+                        <p class="service-description">LEARN ABOUT HEALTH AND FITNESS AT DESKTER.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+           
+               
+   <div ng-view >
+   
+   </div>           
+        
+        
+        
+        
+        
+        
+       
+        
+        
+        
+        
+        
+        <!-- Contact us section starts here -->
+        <section id="ContactUs">
+            <div class="container contact-container">
+                <h3 class="contact-title">Get In Touch</h3>
+                <div class="contact-outer-wrapper">
+                    <div class="address-block">
+                        <p class="add-title">Contact Details</p>
+                        <div class="c-detail">
+                            <span class="c-icon"><i class="fa fa-map-marker" aria-hidden="true"></i></span> <span class="c-info">12 Avenue center, st. marks road, CA</span>
+                        </div>
+                        <div class="c-detail">
+                            <span class="c-icon"><i class="fa fa-phone" aria-hidden="true"></i></span> <span class="c-info">+41982399090000</span>
+                        </div>
+                        <div class="c-detail">
+                            <span class="c-icon"><i class="fa fa-envelope" aria-hidden="true"></i></span> <span class="c-info">click@gmail.com</span>
+                        </div>
+                    </div>
+                    <div class="form-wrap">
+                        <p class="add-title">Send Us Message</p>
+                        <form>
+                            <div class="fname floating-label">
+                                <input type="text" class="floating-input" name="full name" id="full-name-field" />
+                                <label for="full-name-field">Full Name</label>
+                            </div>
+                            <div class="email floating-label">
+                                <input type="email" class="floating-input" name="email" id="mail-field" />
+                                <label for="mail-field">Email</label>
+                            </div>
+                            <div class="contact floating-label">
+                                <input type="tel" class="floating-input" name="contact" id="contact-us-field" />
+                                <label for="contact-us-field">Contact</label>
+                            </div>
+                            <div class="company floating-label">
+                                <input type="text" class="floating-input" name="company" id="company-field" />
+                                <label for="company-field">Company</label>
+                            </div>
+                            <div class="user-msg floating-label">
+                                <textarea class="floating-input" name="user message" id="user-msg-field"></textarea>
+                                <label for="user-msg-field" class="msg-label">Your Message</label>
+                            </div>
+                            <div class="submit-btn">
+                                <button type="submit">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Contact us section ends here -->
+        <!-- Footer section starts here -->
+        <footer id="Footer">
+            <div class="container">
+                <div class="social-share">
+                    <ul>
+                        <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+                <div class="footer-logo-wrap">
+                    Design Studio &copy; 2018. Designed by <a href="https://www.position2.com/">Position2</a>
+                </div>
+            </div>
+        </footer>
+        <!-- Footer section ends here -->
+    </section>
+      <script src="MyApp/myApp.js"></script>
+
+
+<script src="User/UserController.js"></script>
+<script src="User/UserService.js"></script>
+
+
+<script src="Chat/ChatController.js"></script>
+<script src="Chat/ChatService.js"></script>
+
+
+
+
+<script src="Blog/BlogController.js"></script>
+<script src="Blog/BlogService.js"></script>
+
+
+
+
+
+<script src="BlogComment/BlogCommentService.js"></script>
+
+<script src="Forum/ForumController.js"></script>
+<script src="Forum/ForumService.js"></script>
+
+
+
+<script src="ForumComment/ForumCommentService.js"></script>
+
+
+<script src="job/JobController.js"></script>
+<script src="job/JobService.js"></script>
+
+
+<script src="Friend/FriendController.js"></script>
+<script src="Friend/FriendService.js"></script>
+
+
+
+
+
+<script src="Chat/sockjs.js"></script>
+<script src="Chat/sockjs-0.3.4.js"></script>
+<script src="Chat/stomp.js"></script>
+<script src="Chat/ChatController.js"></script>
+<script src="Chat/ChatService.js"></script>
+    
+</body>
+
+</html>

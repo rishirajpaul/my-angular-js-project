@@ -1,0 +1,67 @@
+<style>
+
+caption{
+color: black;
+position: center
+
+}
+table,td {
+  border: 0px solid turquoise;
+  background-color: #b3ccff;
+  position: center;
+  padding: 4px;
+  color: black;
+  width: 100%
+}
+th, td {
+  padding: 25px;
+}
+
+
+</style>
+
+<div>
+<table align="center">
+
+<tr>
+<td colspan="3" align="center"></td>
+</tr>
+
+
+<tr>
+<td>COMPANY NAME-<td><td>{{selectedJob.companyName}}</td>
+</tr>
+<tr>
+<td>LOCATION-<td><td>{{selectedJob.location}}</td>
+</tr>
+<tr>
+<td>JOB DESCRIPTION-<td><td>{{selectedJob.description}}</td>
+</tr>
+<tr>
+<td>POSTED ON -<td><td>{{selectedJob.jobDate | date }}</td>
+</tr>
+<tr>
+<td>STATUS-<td><td>{{selectedJob.status}}</td>
+</tr>
+ 
+
+<a href="#" ng-click="ct.applyForJob(selectedJob,selectedJob.jobId)" class="btn btn-common">Apply job</a> 
+              <a href="#" ng-show=" currentUser.userRole == 'ADMIN'" ng-click="ct.fetchAllJobApplications(job.jobId)" class="btn btn-common">View Job Application </a>
+              <br>
+              <br>
+              
+              <a href="#" ng-show=" currentUser.Role == 'ADMIN' && job.status == 'Active' " ng-click="ct.updateJobAsExpired(selectedJob,job.jobId)" class="btn btn-common">Update Job Status As Expired</a> 
+              <a href="#" ng-show=" currentUser.Role == 'ADMIN'  && job.status == 'Expired' " ng-click="ct.updateJobAsActive(selectedJob,job.jobId)" class="btn btn-common">Update Job Status As Active </a>
+              
+
+</table>
+</div><!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>

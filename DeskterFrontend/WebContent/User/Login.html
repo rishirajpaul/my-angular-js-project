@@ -1,0 +1,43 @@
+<div id="login">
+	<div class="container">
+		<div>
+			<div>
+<div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+<div ng-show='ct.user.errorMessage!=""'>
+<div>Error :
+		{{ct.user.errorMessage}}</div>
+</div>
+<fieldset>
+	<legend>Login Page</legend>
+	<div>
+<form ng-submit="ct.authenticateUser(ct.user)" name="myForm" >
+
+<table>
+
+          <tr>
+            <td>User Id:</td>
+            <td><input type="userId" name="userId" required pattern=".{3,25}"
+            placeholder="User Id ..." ng-model="ct.user.userId" required/></td>
+          </tr>
+         
+         <tr>
+            <td>Password:</td>
+            <td><input type="password" name="password" 
+            placeholder="Password of the user ..." ng-model="ct.user.password" required/></td>
+          </tr>
+          
+          
+         <tr>
+         <br><br>
+            <td><input type="submit" class="btn btn-info floatright" value="submit"></td>
+            
+         </tr>
+      </table>
+  </form>
+</div>
+</fieldset>
+</div>
+			</div>
+		</div>
+	</div>
+</div>

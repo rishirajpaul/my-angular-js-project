@@ -1,0 +1,28 @@
+<!-- all-user-view -->
+
+<div>
+	<div class="container">
+	<div>
+	
+	<div class="col-md-4" ng-repeat="jobApplication in ct.jobApplications">
+	<div>
+	<div>
+	<h3>{{jobApplication.userid}}</h3>
+	<p>{{jobApplication.Jobid}}</p>
+	
+	
+	</div>
+	<div>
+	<h4><a><span><i class="fa fa-rss" aria-hidden="true"></i></span>{{jobApplication.status}}</a></h4>
+<ul style="text-align: center;">
+
+<button ng-show=" currentUser.role == 'ADMIN' && (jobApplication.status == 'Pending' || jobApplication.status == 'Reject')" ng-click="ct.approveJobApplication(jobApplication,jobApplication.jobApplicationId)">Select</button>
+<button ng-show=" currentUser.role == 'ADMIN' && (jobApplication.status == 'Pending' || jobApplication.status == 'Call For Interview')" ng-click="ct.rejectJobApplication(jobApplication,jobApplication.jobApplicationId)">Reject</button>
+
+		</ul>
+		</div>
+		</div>
+		</div>
+		</div>
+		</div>
+		</div>

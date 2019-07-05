@@ -1,0 +1,30 @@
+<!-- all-user-view -->
+
+<div>
+	<div class="container">
+	<div>
+	
+	<div class="col-md-4" ng-repeat="job in ct.jobs">
+	<div>
+	<div>
+	<h3>{{job.companyName}}</h3>
+	
+	<div>
+	
+	
+<input type="button" class="btn btn-warning floatright"
+	ng-click="ct.getSelectedJob(job.jobId)" 
+      value="Know More..">
+      
+
+	</div>
+	</div>
+	<div>
+	<h4><a><span><i class="fa fa-rss" aria-hidden="true"></i></span>{{job.companyName}}</a></h4>
+<ul style="text-align: center;">
+
+		</ul>
+		</div>
+		</div>
+		</div>
+		</div>
